@@ -1,0 +1,12 @@
+.thumbnail{
+	min-height: 500px;
+	max-height:500px;
+}
+body{
+	padding-top: 60px;
+}
+
+.singleImage{
+	max-width: 100%;
+	padding-bottom: 50px; 
+}

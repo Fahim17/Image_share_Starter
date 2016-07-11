@@ -1,0 +1,70 @@
+<head>
+	<title>image_share</title>
+</head>
+
+<body>
+
+
+ 
+
+
+	
+</body>
+<!--=================Templetes=================-->
+<template name="ApplicationLayout">
+	{{>yield "navbar"}}
+	{{>yield "main"}}
+</template>
+<!--=================Templetes=================-->
+<template name="image">
+<div class="container">
+	<a href="/images"><img src="{{img_src}}" class="singleImage" /></a>
+</div>
+	
+</template>
+<!--=================Templetes=================-->
+<template name="welcome">
+	<div class="container">
+		<h1>Welcome	 {{username}}</h1>
+		{{>imgUpload}}
+	</div>
+</template>
+<!--=================Templetes=================-->
+<template name="navbar">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			{{>loginButtons}}	
+		</div>
+	</nav>	
+
+</template>
+<!--=================Templetes=================-->
+<template name="imgUpload">
+{{#if currentUser}}
+<form class="imageUpload" >
+	<input type="text" name="uploadURL" />
+	<input type="submit" class="btn btn-success" value="Save">
+</form>
+{{/if}}
+</template>
+<!--=================Templetes=================-->
+<template name="images">
+<div class="container">
+	<div class="row">
+		
+	{{#each image}}
+	<div class="col-xs-12 col-md-3" id="{{_id}}">
+		<div class="thumbnail">
+			<a href="/image/{{_id}}"><img src="{{img_src}}"/></a>
+			<h3>RATING: {{rating}}</h3>
+			<h4>UserName: <a href="#" class="js-set-image-filter">{{getUser createdBy}}</a></h4>
+			<p>{{> starsRating id='rating' mutable=true class="rate-image" id =_id}}</p>
+			<button class="delete btn btn-warning pull-right">Remove</button>
+		</div>
+	</div>
+		
+
+	{{/each}}
+	</div>
+</div>
+</template>
